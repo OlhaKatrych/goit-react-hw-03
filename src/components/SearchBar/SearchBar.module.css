@@ -1,0 +1,12 @@
+.searchContainer {
+
+    margin-bottom: 15px;
+}
+
+.inputSearch {
+
+    width: 400px;
+    padding: 7px;
+    border: 1px solid black;
+    border-radius: 5px;
+}

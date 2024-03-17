@@ -1,26 +1,17 @@
+.elemContainer {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .textNumberContainer {
     width: 150px;
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
-
-.listContact {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    list-style: none;
-    width: 400px;
-    padding: 10px;
-    border: 2px solid black;
-    border-radius: 15px;
-}
-
-.listContact:not(:last-child){
-
-    margin-bottom: 10px
-} 
 
 .symbol {
 
