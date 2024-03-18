@@ -32,8 +32,15 @@ function App() {
       id: nanoid(),
     };
 
-    setContacts((prevState) => [...prevState, addedContact])
+    setContacts((prevState) => [...prevState, addedContact]);
   }
+
+  function onDeleteContact(contactId) {
+    setContacts((prevState) => {
+      return prevState.filter((contact) => contact.id !== contactId);
+    });
+  }
+
   const filterContacts = contacts.filter((contact) => {
     return contact.name.toLowerCase().includes(filter.toLowerCase());
   });
@@ -41,9 +48,9 @@ function App() {
   return (
     <div className={css.rootContainer}>
       <h1 className={css.title}>Phonebook</h1>
-      <ContactForm  onAddContact={onAddNewContact}/>
+      <ContactForm onAddContact={onAddNewContact} />
       <SearchBar value={filter} onFilter={handleChange} />
-      <ContactList contactValue={filterContacts} />
+      <ContactList contactValue={filterContacts} onDelete={onDeleteContact}/>
     </div>
   );
 }
