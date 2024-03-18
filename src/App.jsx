@@ -3,6 +3,8 @@ import contactsArray from "./contactsArray";
 import { useEffect, useState } from "react";
 import ContactList from "./components/ContactList/ContactList";
 import SearchBar from "./components/SearchBar/SearchBar";
+import { nanoid } from "nanoid";
+import ContactForm from "./components/ContactForm/ContactForm";
 
 function App() {
   const [contacts, setContacts] = useState(() => {
@@ -23,6 +25,15 @@ function App() {
   function handleChange(evt) {
     setFilter(evt.target.value);
   }
+
+  function onAddNewContact(newContact) {
+    const addedContact = {
+      ...newContact,
+      id: nanoid(),
+    };
+
+    setContacts((prevState) => [...prevState, addedContact])
+  }
   const filterContacts = contacts.filter((contact) => {
     return contact.name.toLowerCase().includes(filter.toLowerCase());
   });
@@ -30,8 +41,9 @@ function App() {
   return (
     <div className={css.rootContainer}>
       <h1 className={css.title}>Phonebook</h1>
+      <ContactForm  onAddContact={onAddNewContact}/>
       <SearchBar value={filter} onFilter={handleChange} />
-      <ContactList contactValue={filterContacts}/>
+      <ContactList contactValue={filterContacts} />
     </div>
   );
 }
